@@ -15,6 +15,7 @@ class MainActivity2 : AppCompatActivity() {
     lateinit var seekBar : SeekBar
     lateinit var editText01 : EditText
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
