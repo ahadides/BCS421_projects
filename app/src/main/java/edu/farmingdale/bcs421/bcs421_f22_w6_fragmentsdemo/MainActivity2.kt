@@ -28,6 +28,7 @@ class MainActivity2 : AppCompatActivity() {
         var frgmnt01 = Fragment01()
         var frgmnt02 = Fragment02()
 
+
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 val textSize = (12 + (progress)*2) .toFloat()
