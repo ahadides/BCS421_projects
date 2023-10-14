@@ -38,7 +38,7 @@ class Question7 : AppCompatActivity() {
                 previouslySelectedRB!!.setTextColor(Color.BLACK)
             }
 
-            selectedRadioButton.setTextColor(Color.BLUE) // You can change this color
+            selectedRadioButton.setTextColor(Color.BLUE)
             previouslySelectedRB = selectedRadioButton
 
         }
