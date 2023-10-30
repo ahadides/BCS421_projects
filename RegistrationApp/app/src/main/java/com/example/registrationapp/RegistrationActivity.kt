@@ -1,5 +1,6 @@
 package com.example.registrationapp
 
+import Users
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
@@ -33,21 +34,23 @@ class RegistrationActivity : AppCompatActivity() {
             val dateOfBirth = DOB.text.toString()
             val email = emailEditText.text.toString()
             val password = passW.text.toString()
-                if(isInputEmpty(firstName, lastName, dateOfBirth, email, password)) {
-                    if (isValidInput(firstName, lastName, dateOfBirth, email, password)) {
+                if(isInputEmpty(firstName, lastName, dateOfBirth, email, password,0,0)) {
+                    if (isValidInput(firstName, lastName, dateOfBirth, email, password,0,0)) {
                         // Data is valid, you can proceed with registration
-                        val newUser = Users(firstName, lastName, dateOfBirth, email, password)
+                        val newUser = Users(firstName, lastName, dateOfBirth, email, password,0,0)
                         newUser.firstName = firstName
                         newUser.lastName = lastName
                         newUser.dateOfBirth = dateOfBirth
                         newUser.email = email
                         newUser.password = password
                         val intent = Intent(this, Login_Activity::class.java)
-                        // Add your registration logic here
+
                         Log.d("NewUser", newUser.email)
                         intent.putExtra("newUser", newUser)
                         setResult(Activity.RESULT_OK, intent)
-                        Toast.makeText(this, "User Registered", Toast.LENGTH_SHORT).show()
+
+
+                        // Toast.makeText(this, "User Registered", Toast.LENGTH_SHORT).show()
                         finish()
                     } else {
                         Toast.makeText(this, "Error: Check Information Format ", Toast.LENGTH_SHORT).show()
@@ -64,7 +67,9 @@ class RegistrationActivity : AppCompatActivity() {
 
 
 
-    private fun isValidInput(firstName: String, familyName: String, dateOfBirth: String, email: String, password: String): Boolean {
+
+
+    private fun isValidInput(firstName: String, familyName: String, dateOfBirth: String, email: String, password: String, nun: Int, num: Int): Boolean {
         // Perform validation here
         return (isValidFirstName(firstName) && isValidFamilyName(familyName) && isValidDateOfBirth(dateOfBirth) && isValidEmail(email) && isValidPassword(password))
     }
@@ -91,7 +96,7 @@ class RegistrationActivity : AppCompatActivity() {
         val passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$".toRegex()
         return passwordPattern.matches(password)
     }
-    private fun isInputEmpty(firstName: String, lastName: String, dateOfBirth: String, email: String, password: String): Boolean {
+    private fun isInputEmpty(firstName: String, lastName: String, dateOfBirth: String, email: String, password: String, nun: Int, num: Int): Boolean {
         // Check if any of the fields is empty
         if (firstName.isEmpty() || lastName.isEmpty() || dateOfBirth.isEmpty() || email.isEmpty() || password.isEmpty()) {
             return false
